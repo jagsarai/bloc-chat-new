@@ -1,0 +1,19 @@
+<div>
+	<div class="modal-header">
+		<h3>
+			<i class="fa fa-comments"></i>
+			New Room
+		</h3>
+	</div>
+	
+	<div>
+	<input type="text" name="room" ng-model="modal.room.$value" id="content">
+	</div>
+	<br>
+	
+	<div class="modal-footer">
+		<button class="btn btn-danger" type="button" ng-click="modal.cancel()">Cancel</button>
+		<button class="btn btn-success" type="button" ng-click="modal.submit()" ng-show="modal.room.$value">Create Room</button>
+	</div>
+	
+</div>

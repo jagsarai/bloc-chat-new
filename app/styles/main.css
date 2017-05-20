@@ -1,0 +1,32 @@
+.nav, .pagination, .carousel, .panel-title a { 
+	cursor: pointer; 
+}
+
+html, body{
+    height: 100%;
+    font-size: 120%;
+	margin: 0;
+}
+
+.side-bar{
+	width: 30%;
+	height: 100%;
+	margin: 0;
+	padding-left: 2rem;
+	padding-top: 1rem;
+	float: left;
+}
+
+@media(max-width: 640px){
+	.side-bar, .message-container{
+		width: 50%;
+		height: 30%;
+		margin: 0;
+	}
+	.message-container{
+		float: right;
+	}
+	html{
+		font-size: 100%;
+	}
+}

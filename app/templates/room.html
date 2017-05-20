@@ -1,0 +1,45 @@
+<div class="page-header">
+ 	<h1>	
+		<i class="fa fa-comment" aria-hidden="true"></i>
+		Bloc Chat
+	</h1>
+</div>
+
+<div class="container-fluid" ng-controller="ModalCtrl as modal">
+	
+	<div class="side-bar">
+		<div class="wrapper">
+			<button ng-click="modal.open()" class="btn btn-primary" id="room-button">Add New Room</button>
+			<br>
+			<div class="room-list" ng-repeat="room in room.rooms">
+				<div class="room-id" ng-click="activeRoom(room.$value, room.$id)">
+					{{room.$value}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-content">
+		<h1>{{roomValue}}</h1>
+		<hr>
+		<div class="message-container" ng-repeat="message in showMessages">
+			<div class="message-username">{{message.username}}
+				<div class="message-content">{{message.content}}</div>
+				<div class="message-sentAt">{{message.sentAt | date:'shortTime'}}</div>
+			</div>
+			<hr>
+		</div>
+		<div id="new-message-field">
+			<input id="new-message-input" type="text" name="message" ng-model="message.content" placeholder="write a message" required>
+			<button id="new-message-submit" class="btn btn-primary" type="button" ng-click="addMessage(message.content)" ng-show="message.content">Send</button>
+		</div>
+	</div>
+	
+</div>
+
+
+
+
+
+
+

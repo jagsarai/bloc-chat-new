@@ -1,0 +1,15 @@
+.app-modal-window .modal-dialog{
+	text-align: center;
+}
+
+.modal-header{
+	margin: 20px;
+}
+
+.modal-footer{
+	background-color: #eee;
+}
+
+#content{
+	border-radius: 5px;
+}
