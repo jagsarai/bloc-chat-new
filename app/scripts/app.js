@@ -12,10 +12,10 @@
 				controller: 'RoomCtrl as room',
 				templateUrl: '/templates/room.html'
 		})
-			.state('landing',{
+			.state('main',{
 				url: '/',
 				controller: 'AuthCtrl as auth',
-				templateUrl: '/templates/landing.html'
+				templateUrl: '/templates/main.html'
 		});
 	}
 	angular
