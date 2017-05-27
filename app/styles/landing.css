@@ -1,6 +1,7 @@
 #login, #signup{
 	display: inline-block;
 	float: right;
+	background-color: #0A97F0;
 }
 
 #signup{
@@ -9,20 +10,31 @@
 
 #landing-page{
 	margin-bottom: 0;
+	padding: 10%;
+}
+
+#landing-page-heading,
+#landing-page-description,
+#landing-page-log-in,
+#landing-page-sign-up{
+	font-family: 'Ubuntu', sans-serif;
 }
 
 #landing-page-heading{
-
 	font-weight: 700;
 }
 
 #landing-page-description{
-	color: skyblue;
+	color: #0A97F0;
 	font-weight: 400;
 }
 
+#landing-page-log-in,
+#landing-page-sign-up{
+	padding-left: 5px;
+}
+
 #landing-page-img{
-	background-image: url(https://pixabay.com/get/e83cb70b2df3093ecd1f4107e0444395eb6ae3d110b5184891f5c77c/talk-bubble-1964578.jpg);
 	min-height: 650px;
 	background-size: cover;	
 	opacity: 0.6;

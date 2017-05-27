@@ -1,8 +1,8 @@
 (function(){
-	function ModalInstanceCtrl($uibModalInstance){
+	function ModalInstanceCtrl($uibModalInstance, $scope){
 		//Submit the form data to modal.
 		this.submit = function(){
-			$uibModalInstance.close(this.room);
+			$uibModalInstance.close(this.room);			
 		};
 		//cancel the modal after opening it by pressing the modal button.
 		this.cancel = function(){
@@ -11,5 +11,5 @@
 	}
 	angular
 		.module('blocChat')
-		.controller('ModalInstanceCtrl', ['$uibModalInstance', ModalInstanceCtrl]);
+		.controller('ModalInstanceCtrl', ['$uibModalInstance', "$scope", ModalInstanceCtrl]);
 })();

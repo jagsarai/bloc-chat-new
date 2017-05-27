@@ -4,15 +4,15 @@
 
 html, body{
     height: 100%;
-    font-size: 120%;
+    font-size: 100%;
 	margin: 0;
+	border-top: 1px solid #0A97F0;
 }
 
 .side-bar{
 	width: 30%;
 	height: 100%;
 	margin: 0;
-	padding-left: 2rem;
 	padding-top: 1rem;
 	float: left;
 }
@@ -23,10 +23,12 @@ html, body{
 		height: 30%;
 		margin: 0;
 	}
-	.message-container{
-		float: right;
+	
+	#room{
+		padding: 0px;
 	}
-	html{
-		font-size: 100%;
+	
+	#new-message-submit{
+		width: auto;	
 	}
 }

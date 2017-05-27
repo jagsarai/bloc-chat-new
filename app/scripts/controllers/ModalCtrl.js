@@ -1,5 +1,5 @@
 (function(){
-	function ModalCtrl($uibModal, Room){
+	function ModalCtrl($uibModal, $scope, Room){
 		this.open = function(){
 			var modalInstance = $uibModal.open({
 				animation: this.animationsEnabled,
@@ -11,12 +11,17 @@
 			
 			modalInstance.result.then(function(room){
 				console.log(room);
-				Room.add(room);
+				if($scope.messageObject.username != null){
+					Room.add(room);
+				}
+				else{
+					alert("ERROR: Sign in required!");
+				}
 			});
 		}
 	}
 	
 	angular
 		.module('blocChat')
-		.controller('ModalCtrl', ['$uibModal', 'Room', ModalCtrl]);
+		.controller('ModalCtrl', ['$uibModal', '$scope', 'Room', ModalCtrl]);
 })();

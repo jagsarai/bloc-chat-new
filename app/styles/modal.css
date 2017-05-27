@@ -1,9 +1,19 @@
+
+#new-room-modal{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#new-room-span{
+	float: none;
+}
+
 .app-modal-window .modal-dialog{
 	text-align: center;
 }
 
 .modal-header{
 	margin: 20px;
+	
 }
 
 .modal-footer{
