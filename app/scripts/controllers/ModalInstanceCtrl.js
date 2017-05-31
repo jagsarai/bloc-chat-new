@@ -2,7 +2,7 @@
 	function ModalInstanceCtrl($uibModalInstance, $scope){
 		//Submit the form data to modal.
 		this.submit = function(){
-			$uibModalInstance.close(this.room);			
+			$uibModalInstance.close(this.publicRoom);			
 		};
 		//cancel the modal after opening it by pressing the modal button.
 		this.cancel = function(){

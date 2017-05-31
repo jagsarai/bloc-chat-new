@@ -19,14 +19,19 @@
 			<hr>
 			<div>PUBLIC</div>
 			<hr>
-			<div class="room-list" ng-repeat="room in room.rooms">
+			<div class="room-list" ng-repeat="room in room.publicRooms">
 				<div class="room-id" ng-click="activeRoom(room.$value, room.$id)">
 					{{room.$value}}
 				</div>
 			</div>
 			<hr>
-			<div>PRIVATE</div>
+			<div ng-show="messageObject.adminUser">PRIVATE</div>
 			<hr>
+			<div class="room-list" ng-repeat="room in room.privateRooms" ng-show="messageObject.adminUser">
+				<div class="room-id" ng-click="activeRoom(room.$value, room.$id)">
+					{{room.$value}}
+				</div>
+			</div>
 		</div>
 	</div>
 

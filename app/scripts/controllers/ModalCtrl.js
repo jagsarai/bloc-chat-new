@@ -8,11 +8,10 @@
 				controllerAs: 'modal',
 				windowClass: 'app-modal-window'
 			});
-			
-			modalInstance.result.then(function(room){
-				console.log(room);
+			modalInstance.result.then(function(publicRoom){
+				console.log(publicRoom);
 				if($scope.messageObject.username != null){
-					Room.add(room);
+					Room.addPublic(publicRoom);
 				}
 				else{
 					alert("ERROR: Sign in required!");

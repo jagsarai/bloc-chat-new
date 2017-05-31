@@ -1,46 +1,1 @@
-(function(){
-	function AuthCtrl($scope, $cookies, $state, Auth){
-
-		Auth.isAdmin = false;
-
-		//sign in function to sign in our app with google accounts
-		$scope.signIn = function(){
-			Auth.$signInWithPopup("google").then(function(result){
-				
-				console.log(Auth.token);
-				console.log(result);
-
-				Auth.userData = result;
-				Auth.username =  result.user.displayName;
-				Auth.uid = result.user.uid;
-				//verify if user is admin user 
-				if(Auth.uid === 'POTUpSZ1ABXkW5EIUXzGkgzBuFp1'){
-					Auth.isAdmin = true;
-				}
-
-				$state.go('room');
-				console.log("Signed in as " + result.user.uid);
-				
-			}).catch(function(error){
-				console.error("Authentication failed:", error);
-			});
-		}
-		
-		//sign out function to log out user from app
-		$scope.signOut = function(){
-			if(Auth.username != null){
-				alert("Thank you for visiting: " + Auth.username);
-				Auth.username = null;
-				$state.go('main');
-			}
-			else{
-				alert("ERROR: Sign in required!");
-				$state.go('main');
-			}
-		}
-		
-	}
-	angular
-		.module('blocChat')
-		.controller('AuthCtrl', ['$scope', '$cookies', '$state', 'Auth', AuthCtrl]);
-})();
+(function(){	function AuthCtrl($scope, $state, Auth, User){				Auth.isAdmin = false;		$scope.cancel = function(){			$state.go('main');		}		$scope.signupForm = function(){			$state.go('signup');		}		$scope.signinForm = function(){			$state.go('signin');		}				$scope.signup = function(){			var username = User.getUsername($scope.username);			console.log(username);			//checks to see if the current username is taken or not			username.$loaded().then(function(){				angular.forEach(username, function(user){					if(user.username === $scope.username){						$scope.email = null;						$scope.password = null;						$scope.username = null;						$state.reload('signup');						alert("ERROR: Username already exists!");					}				});			}).then(function(){ //creates user if the username is not taken					Auth.$createUserWithEmailAndPassword($scope.email, $scope.password)					.then(function(firebaseUser){						firebaseUser.updateProfile({displayName: $scope.username});						Auth.username = $scope.username;						console.log(Auth.username);						Auth.email = $scope.email;												var user = {};						user.username = $scope.username;						user.email = $scope.email;						User.addUser(user);						console.log("User " + firebaseUser.displayName + " created successfully");						alert("Thank you for signing up, please log in!");						$state.go('main');					}).catch(function(error){						console.error("Error: ", error);						alert(error);					});				});		}		$scope.signInWithEmail = function(){			Auth.$signInWithEmailAndPassword($scope.email, $scope.password)			.then(function(firebaseUser){				console.log(firebaseUser);				Auth.username = firebaseUser.displayName;				Auth.email = firebaseUser.email;				console.log("logged in as " + firebaseUser.displayName + " " + firebaseUser.uid);				$state.go('room');			}).catch(function(error){				console.error("Error ", error);				alert(error);			});		}		//sign in function to sign in our app with google accounts		$scope.signInGoogle = function(){			Auth.$signInWithPopup("google").then(function(result){				console.log(result);				Auth.username =  result.user.displayName;				Auth.email = result.user.email;								//verify if user is admin user 							$state.go('room');				console.log("Signed in as " + result.user.uid);							}).catch(function(error){				console.error("Authentication failed:", error);			});		}		$scope.signInGithub = function(){			Auth.$signInWithPopup("github").then(function(result){				console.log(result);				Auth.username =  result.user.displayName;				Auth.email = result.user.email;						//verify if user is admin user 				var adminUser = User.getAdmin(result.user.uid);				console.log(adminUser);				$state.go('room');				console.log("Signed in as " + result.user.uid);							}).catch(function(error){				console.error("Authentication failed:", error);			});		}		$scope.signInFacebook = function(){			Auth.$signInWithPopup("facebook").then(function(result){				console.log(result);				Auth.username =  result.user.displayName;				Auth.email = result.user.email;								//verify if user is admin user 				$state.go('room');				console.log("Signed in as " + result.user.uid);							}).catch(function(error){				console.error("Authentication failed:", error);			});		}				//sign out function to log out user from app		$scope.signOut = function(){			if(Auth.username != null){				alert("Thank you for visiting: " + Auth.username);				Auth.username = null;				$state.go('main');			}			else{				alert("ERROR: Sign in required!");				$state.go('main');			}		}			}	angular		.module('blocChat')		.controller('AuthCtrl', ['$scope', '$state', 'Auth', 'User', AuthCtrl]);})();

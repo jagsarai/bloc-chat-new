@@ -1,16 +1,30 @@
 <div class="jumbotron" id="landing-page">
   <h1 id="landing-page-heading">Bloc Chat</h1>
 	<hr>
-  <p id="landing-page-description">Please log in or sign up using a google account to enjoy this awesome app</p>
+  <p id="landing-page-description">Please log in or sign up using one of our various sign-in methods.</p>
   <div class="container">
-	  <button class="btn btn-success btn-lg" id="login">
-		  <span class="fa fa-google" ng-click="signIn()"><span id="landing-page-log-in">Log in</span></span>
+	  <button class="btn btn-primary btn-lg login">
+		  <span class="fa fa-google" ng-click="signInGoogle()"><span id="landing-page-log-in">Log In</span></span>
 	  </button>
-<!--
-  	  <button class="btn btn-success btn-lg" id="signup">
-		  <span class="fa fa-user-plus"><span id="landing-page-sign-up">Sign up</span></span>
+
+	  <button class="btn btn-primary btn-lg login">
+		  <span class="fa fa-github" ng-click="signInGithub()"><span id="landing-page-log-in">Log In</span></span>
 	  </button>
--->
+
+	  <button class="btn btn-primary btn-lg login">
+		  <span class="fa fa-facebook" ng-click="signInFacebook()"><span id="landing-page-log-in">Log In</span></span>
+	  </button>
+
+	  <button class="btn btn-primary btn-lg signin">
+		  <span class="fa fa-user-circle" ng-click="signinForm()"><span id="landing-page-sign-in">Sign In</span></span>
+	  </button>
+
+  	  <button class="btn btn-primary btn-lg signup">
+		  <span class="fa fa-user-plus" ng-click="signupForm()"><span id="landing-page-sign-up">Sign Up</span></span>
+	  </button>
+
+	  
+
 	</div>
 </div>
 <div id="landing-page-img">

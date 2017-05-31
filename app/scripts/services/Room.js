@@ -1,15 +1,23 @@
 (function(){
 	function Room($firebaseArray){
 		var Room = {};
-		var ref = firebase.database().ref().child("rooms");
-		var rooms = $firebaseArray(ref);
+		var pubRef = firebase.database().ref().child("rooms").child("public");
+		var pubRooms = $firebaseArray(pubRef);
+		var priRef = firebase.database().ref().child("rooms").child("private");
+		var priRooms = $firebaseArray(priRef);
 		
-		Room.all = rooms;
+		Room.allPublic = pubRooms;
+		Room.allPrivate = priRooms;
 		
-		console.log(Room.all);
-		
-		Room.add = function(room){
-			rooms.$add(room);
+		console.log(Room.allPublic);
+		console.log(Room.allPrivate);
+
+		Room.addPublic = function(room){
+			pubRooms.$add(room);
+		}
+
+		Room.addPrivate = function(room){
+			priRooms.$add(room);
 		}
 		
 		return Room;

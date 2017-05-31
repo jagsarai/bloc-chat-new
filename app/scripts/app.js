@@ -16,6 +16,16 @@
 				url: '/',
 				controller: 'AuthCtrl as auth',
 				templateUrl: '/templates/main.html'
+		})
+			.state('signup',{
+				url:'/signup',
+				controller: 'AuthCtrl as auth',
+				templateUrl:'/templates/signup.html'
+		})
+			.state('signin',{
+				url:'/signin',
+				controller: 'AuthCtrl as auth',
+				templateUrl:'/templates/signin.html'
 		});
 	}
 	angular

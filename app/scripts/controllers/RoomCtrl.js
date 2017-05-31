@@ -5,7 +5,8 @@
 			$state.go('main');
 		}
 
-		this.rooms = Room.all;
+		this.publicRooms = Room.allPublic;
+		this.privateRooms = Room.allPrivate;
 
 		$scope.messageObject = {};
 		$scope.messageObject.username = Auth.username;
